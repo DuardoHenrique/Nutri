@@ -81,8 +81,8 @@ export function HeroSection() {
           />
 
           {/* Gradient Overlays */}
-          {/* Top gradient for copy readability (White as requested) */}
-          <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-white via-white/80 to-transparent z-10" />
+          {/* Top gradient for copy readability (White as requested) - Mobile Only */}
+          <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-white via-white/80 to-transparent z-10 md:hidden" />
           
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/10 to-transparent hidden md:block w-[0%]" />
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-transparent md:hidden" />
