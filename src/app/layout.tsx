@@ -24,11 +24,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://nutri.duardoribeiro.com.br'),
   title: "NutraViva | Transformação Corporal com Ciência",
   description:
     "Plano nutricional inteligente e personalizado para transformar o físico com orientação profissional, sem fome e sem soluções milagrosas.",
   generator: "Next.js",
-  authors: [{ name: "Dra. Letícia", url: "https://nutraviva.com.br" }],
+  authors: [{ name: "Dra. Letícia", url: "https://nutri.duardoribeiro.com.br" }],
   openGraph: {
     title: "NutraViva - Nutricionista",
     description: "Plano nutricional inteligente e personalizado para transformar o físico.",
