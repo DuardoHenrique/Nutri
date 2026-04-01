@@ -39,10 +39,9 @@ export function HeroSection() {
         onUpdate: (self) => {
           const video = isMobile ? videoMobileRef.current : videoRef.current;
           if (video && video.duration) {
-            // Offset the start slightly (0.1s) to skip potential black frames/static at start
-            // and map the progress to the rest of the duration
-            const startOffset = 0.2; 
-            const availableDuration = video.duration - startOffset;
+            // Offset the start by 1 second as requested
+            const startOffset = 1.0; 
+            const availableDuration = Math.max(0, video.duration - startOffset);
             video.currentTime = startOffset + (self.progress * availableDuration);
           }
         },
@@ -82,8 +81,8 @@ export function HeroSection() {
           />
 
           {/* Gradient Overlays */}
-          {/* Top gradient for copy readability */}
-          <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-black/70 via-black/30 to-transparent z-10 opacity-80" />
+          {/* Top gradient for copy readability (White as requested) */}
+          <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-white via-white/80 to-transparent z-10" />
           
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/10 to-transparent hidden md:block w-[0%]" />
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-transparent md:hidden" />
@@ -93,10 +92,10 @@ export function HeroSection() {
           
           {/* Focus Content */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-2xl mt-8 sm:mt-12 md:mt-0">
-            <h1 className="text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight mb-4 drop-shadow-sm">
-              Emagreça com método, <span className="text-green-400">sem passar fome.</span>
+            <h1 className="text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 leading-tight mb-4">
+              Emagreça com método, <span className="text-green-600">sem passar fome.</span>
             </h1>
-            <p className="text-base md:text-xl font-body text-white/90 font-medium mb-6 leading-relaxed max-w-[90%] md:max-w-none">
+            <p className="text-base md:text-xl font-body text-gray-800 font-medium mb-6 leading-relaxed max-w-[90%] md:max-w-none">
               Acompanhamento profissional personalizado para emagrecimento e hipertrofia, adaptado à sua realidade.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4">
