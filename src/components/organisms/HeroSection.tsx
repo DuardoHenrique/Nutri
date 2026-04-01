@@ -65,7 +65,7 @@ export function HeroSection() {
           {/* Desktop Video */}
           <video
             ref={videoRef}
-            src="/videos/hero.mp4"
+            src="/background-hero.mp4"
             className="hidden md:block w-full h-full object-cover object-center"
             playsInline
             muted
@@ -74,7 +74,7 @@ export function HeroSection() {
           {/* Mobile Video */}
           <video
             ref={videoMobileRef}
-            src="/videos/hero-mobile.mp4"
+            src="/background-hero.mp4"
             className="block md:hidden w-full h-full object-cover object-center"
             playsInline
             muted
