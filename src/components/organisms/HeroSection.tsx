@@ -34,12 +34,13 @@ export function HeroSection() {
         end: isMobile ? "+=150%" : "+=400%", // Reduced on mobile for higher sensitivity
         pin: true,
         scrub: 1,
-        anticipatePin: 1.5, // Increased to prevent jumpy pin start
+        anticipatePin: 1,
         invalidateOnRefresh: true,
+        fastScrollEnd: true,
+        refreshPriority: 1,
         onUpdate: (self) => {
           const video = isMobile ? videoMobileRef.current : videoRef.current;
           if (video && video.duration) {
-            // Offset the start by 1 second as requested
             const startOffset = 1.0; 
             const availableDuration = Math.max(0, video.duration - startOffset);
             video.currentTime = startOffset + (self.progress * availableDuration);
