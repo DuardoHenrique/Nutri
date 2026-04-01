@@ -1,7 +1,7 @@
 "use client";
 
 import Lenis from "lenis";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -11,8 +11,11 @@ if (typeof window !== "undefined") {
 }
 
 export function SmoothScrolling({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    // ... logic remains same ...
+    setMounted(true);
+    
     const lenis = new Lenis({
       lerp: 0.1,
       duration: 1.2,
@@ -36,5 +39,13 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  return <div className="min-h-screen relative">{children}</div>;
+  if (!mounted) {
+    return <>{children}</>;
+  }
+
+  return (
+    <div className="min-h-screen relative overflow-x-hidden">
+      {children}
+    </div>
+  );
 }
