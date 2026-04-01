@@ -31,7 +31,7 @@ export function HeroSection() {
       ScrollTrigger.create({
         trigger: container.current,
         start: "top top",
-        end: "+=400%",
+        end: isMobile ? "+=150%" : "+=400%", // Reduced on mobile for higher sensitivity
         pin: true,
         scrub: 1,
         anticipatePin: 1,
@@ -78,6 +78,9 @@ export function HeroSection() {
           />
 
           {/* Gradient Overlays */}
+          {/* Top gradient for copy readability */}
+          <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-black/70 via-black/30 to-transparent z-10 opacity-80" />
+          
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/10 to-transparent hidden md:block w-[0%]" />
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-transparent md:hidden" />
         </div>
@@ -86,10 +89,10 @@ export function HeroSection() {
           
           {/* Focus Content */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-2xl mt-8 sm:mt-12 md:mt-0">
-            <h1 className="text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 leading-tight mb-4">
-              Emagreça com método, <span className="text-green-600">sem passar fome.</span>
+            <h1 className="text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight mb-4 drop-shadow-sm">
+              Emagreça com método, <span className="text-green-400">sem passar fome.</span>
             </h1>
-            <p className="text-base md:text-xl font-body text-gray-800 font-medium mb-6 leading-relaxed max-w-[90%] md:max-w-none">
+            <p className="text-base md:text-xl font-body text-white/90 font-medium mb-6 leading-relaxed max-w-[90%] md:max-w-none">
               Acompanhamento profissional personalizado para emagrecimento e hipertrofia, adaptado à sua realidade.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4">

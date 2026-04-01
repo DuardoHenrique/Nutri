@@ -46,6 +46,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { SmoothScrolling } from "@/components/atoms/SmoothScrolling";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -54,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${playfair.variable} ${dmSans.variable}`}>
       <body className="antialiased font-body bg-off-white text-gray-900 min-h-screen">
-        {children}
+        <SmoothScrolling>{children}</SmoothScrolling>
       </body>
     </html>
   );
