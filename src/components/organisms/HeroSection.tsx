@@ -34,7 +34,7 @@ export function HeroSection() {
         end: isMobile ? "+=150%" : "+=400%", // Reduced on mobile for higher sensitivity
         pin: true,
         scrub: 1,
-        anticipatePin: 1,
+        anticipatePin: 1.5, // Increased to prevent jumpy pin start
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           const video = isMobile ? videoMobileRef.current : videoRef.current;
@@ -54,10 +54,10 @@ export function HeroSection() {
   return (
     <section 
       ref={container} 
-      className="relative w-full h-screen h-[100dvh] flex items-center justify-center bg-off-white"
+      className="relative w-full h-screen h-[100dvh] flex items-center justify-center bg-off-white z-20"
     >
       {/* Pinned Content Wrapper */}
-      <div ref={pinnedContent} className="relative w-full h-full flex items-center justify-center">
+      <div ref={pinnedContent} className="relative w-full h-full flex items-center justify-center z-10 bg-off-white">
         
         {/* Background Video Area */}
         <div className="absolute inset-0 z-0 bg-off-white overflow-hidden">

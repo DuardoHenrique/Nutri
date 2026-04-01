@@ -33,7 +33,7 @@ export function SocialProofSection() {
   const items = [...testimonials, ...testimonials];
 
   return (
-    <section className="w-full bg-white py-8 border-y border-gray-100 overflow-hidden relative">
+    <section className="relative z-30 w-full bg-white py-8 border-y border-gray-100 overflow-hidden">
       <div 
         className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"
       />
