@@ -17,12 +17,16 @@ export function SocialProofSection() {
   useEffect(() => {
     if (!tickerRef.current) return;
 
-    gsap.to(tickerRef.current, {
+    const animation = gsap.to(tickerRef.current, {
       xPercent: -50,
       ease: "none",
-      duration: 30, // Adjust speed
+      duration: 40,
       repeat: -1,
     });
+
+    return () => {
+      animation.kill();
+    };
   }, []);
 
   // Double the array to allow seamless scrolling

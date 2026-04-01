@@ -39,7 +39,11 @@ export function HeroSection() {
         onUpdate: (self) => {
           const video = isMobile ? videoMobileRef.current : videoRef.current;
           if (video && video.duration) {
-            video.currentTime = self.progress * video.duration;
+            // Offset the start slightly (0.1s) to skip potential black frames/static at start
+            // and map the progress to the rest of the duration
+            const startOffset = 0.2; 
+            const availableDuration = video.duration - startOffset;
+            video.currentTime = startOffset + (self.progress * availableDuration);
           }
         },
       });
