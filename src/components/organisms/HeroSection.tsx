@@ -40,7 +40,7 @@ export function HeroSection() {
         refreshPriority: 1,
         onUpdate: (self) => {
           const video = isMobile ? videoMobileRef.current : videoRef.current;
-          if (video && video.duration) {
+          if (video && video.duration && video.readyState >= 2) {
             const startOffset = 1.0; 
             const availableDuration = Math.max(0, video.duration - startOffset);
             video.currentTime = startOffset + (self.progress * availableDuration);
