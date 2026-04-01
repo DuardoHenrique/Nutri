@@ -36,7 +36,7 @@ export function CTASection() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-green-950 py-24 sm:py-32 min-h-[700px] flex items-center">
+    <section className="relative w-full overflow-hidden bg-green-950 py-24 sm:py-80 min-h-[700px] flex items-center">
       {/* Background Image */}
       <Image
         src={ctaBgImage}

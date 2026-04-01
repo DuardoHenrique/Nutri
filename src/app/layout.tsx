@@ -45,6 +45,13 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     type: "website",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/icon.png",
+  },
 };
 
 import { SmoothScrolling } from "@/components/atoms/SmoothScrolling";
@@ -56,7 +63,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body className="antialiased font-body bg-off-white text-gray-900 min-h-screen">
+      <body 
+        className="antialiased font-body bg-off-white text-gray-900 min-h-screen"
+        suppressHydrationWarning
+      >
         <SmoothScrolling>{children}</SmoothScrolling>
       </body>
     </html>

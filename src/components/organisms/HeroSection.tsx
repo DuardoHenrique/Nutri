@@ -6,10 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { Button } from "@/components/atoms/Button";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
-
 export function HeroSection() {
   const container = useRef<HTMLDivElement>(null);
   const pinnedContent = useRef<HTMLDivElement>(null);
@@ -65,7 +61,7 @@ export function HeroSection() {
           {/* Desktop Video */}
           <video
             ref={videoRef}
-            src="/background-hero.mp4"
+            src="/videos/hero.mp4"
             className="hidden md:block w-full h-full object-cover object-center"
             playsInline
             muted
@@ -74,7 +70,7 @@ export function HeroSection() {
           {/* Mobile Video */}
           <video
             ref={videoMobileRef}
-            src="/background-hero.mp4"
+            src="/videos/hero-mobile.mp4"
             className="block md:hidden w-full h-full object-cover object-center"
             playsInline
             muted
@@ -89,10 +85,10 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-transparent md:hidden" />
         </div>
 
-        <div className="relative z-10 w-full h-full max-w-screen-2xl mx-auto px-6 lg:px-16 flex flex-col justify-start md:justify-center items-center md:items-start pt-10 md:pt-0">
+        <div className="relative z-10 w-full h-full max-w-screen-2xl mx-auto px-6 lg:px-16 flex flex-col justify-center items-center md:items-start">
           
           {/* Focus Content */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-2xl mt-8 sm:mt-12 md:mt-0">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-2xl">
             <h1 className="text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 leading-tight mb-4">
               Emagreça com método, <span className="text-green-600">sem passar fome.</span>
             </h1>

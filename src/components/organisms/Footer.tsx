@@ -14,7 +14,7 @@ export function Footer() {
             NUTRI<span className="font-light">CIONISTA</span>
           </span>
           <p className="text-green-300/60 text-sm h-6">
-            &copy; {currentYear} Dra. Nome. Todos os direitos reservados.
+            &copy; {currentYear} Dra. Leticia. Todos os direitos reservados.
           </p>
         </div>
 

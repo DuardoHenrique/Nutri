@@ -96,10 +96,10 @@ export function SchedulingModal() {
         onClick={closeModal}
       />
       
-      {/* Modal */}
+      {/* Modal Container */}
       <div className={cn(
-        "relative w-full max-w-2xl bg-white rounded-[2.5rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] overflow-hidden animate-in fade-in zoom-in-95 duration-500",
-        isSuccess ? "py-20" : "px-0"
+        "relative w-full max-w-2xl bg-white rounded-[1.5rem] sm:rounded-[2.5rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] overflow-y-auto max-h-[95vh] sm:max-h-none animate-in fade-in zoom-in-95 duration-500",
+        isSuccess ? "py-12 sm:py-20" : "px-0"
       )}>
         <button 
           onClick={closeModal}
@@ -109,19 +109,19 @@ export function SchedulingModal() {
         </button>
 
         {!isSuccess ? (
-          <div className="px-8 sm:px-16 pb-12 pt-16">
-            <div className="text-center mb-10">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-green-50 text-green-700 text-xs font-bold tracking-widest uppercase mb-4">
+          <div className="px-6 sm:px-16 pb-8 sm:pb-12 pt-10 sm:pt-16">
+            <div className="text-center mb-6 sm:mb-10">
+              <div className="inline-block px-3 py-1 rounded-full bg-green-50 text-green-700 text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-2 sm:mb-4">
                 Inicie sua transformação
               </div>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-gray-900 mb-4">Agende sua Consulta</h2>
+              <h2 className="text-2xl sm:text-4xl font-display font-bold text-gray-900 mb-2 sm:mb-4">Agende sua Consulta</h2>
               <p className="text-gray-600 max-w-sm mx-auto leading-relaxed">
                 Preencha os dados e entraremos em contato para confirmar seu horário.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid grid-cols-1 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-8">
+              <div className="grid grid-cols-1 gap-4 sm:gap-6">
                 {/* Nome */}
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-bold text-gray-900 px-1">Nome Completo</label>
@@ -130,7 +130,7 @@ export function SchedulingModal() {
                     type="text"
                     placeholder="Ex: Maria Oliveira"
                     className={cn(
-                      "w-full px-6 py-4 bg-gray-50 border rounded-2xl text-gray-900 text-lg focus:outline-none focus:ring-4 focus:bg-white transition-all",
+                      "w-full px-5 py-3 sm:px-6 sm:py-4 bg-gray-50 border rounded-xl sm:rounded-2xl text-gray-900 text-base sm:text-lg focus:outline-none focus:ring-4 focus:bg-white transition-all",
                       errors.name ? "border-red-400 focus:ring-red-100" : "border-gray-100 focus:border-green-500 focus:ring-green-50"
                     )}
                     value={name}
@@ -150,7 +150,7 @@ export function SchedulingModal() {
                     type="text"
                     placeholder="4499999-9999"
                     className={cn(
-                      "w-full px-6 py-4 bg-gray-50 border rounded-2xl text-gray-900 text-lg focus:outline-none focus:ring-4 focus:bg-white transition-all",
+                      "w-full px-5 py-3 sm:px-6 sm:py-4 bg-gray-50 border rounded-xl sm:rounded-2xl text-gray-900 text-base sm:text-lg focus:outline-none focus:ring-4 focus:bg-white transition-all",
                       errors.whatsapp ? "border-red-400 focus:ring-red-100" : "border-gray-100 focus:border-green-500 focus:ring-green-50"
                     )}
                     value={formatWhatsapp(whatsapp)}
@@ -165,7 +165,7 @@ export function SchedulingModal() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <label 
                       className={cn(
-                        "flex items-center justify-between px-6 py-5 border-2 rounded-2xl cursor-pointer transition-all",
+                        "flex items-center justify-between px-5 py-4 sm:px-6 sm:py-5 border-2 rounded-xl sm:rounded-2xl cursor-pointer transition-all",
                         subject === "ganhar massa muscular" 
                           ? "border-green-600 bg-green-50/50 shadow-inner shadow-green-100" 
                           : "border-gray-100 bg-gray-50/50 text-gray-500 hover:border-gray-200"
@@ -196,7 +196,7 @@ export function SchedulingModal() {
                     
                     <label 
                       className={cn(
-                        "flex items-center justify-between px-6 py-5 border-2 rounded-2xl cursor-pointer transition-all",
+                        "flex items-center justify-between px-5 py-4 sm:px-6 sm:py-5 border-2 rounded-xl sm:rounded-2xl cursor-pointer transition-all",
                         subject === "perder peso" 
                           ? "border-green-600 bg-green-50/50 shadow-inner shadow-green-100" 
                           : "border-gray-100 bg-gray-50/50 text-gray-500 hover:border-gray-200"
@@ -232,7 +232,7 @@ export function SchedulingModal() {
               <Button 
                 type="submit" 
                 variant="primary" 
-                className="w-full py-5 text-lg font-bold shadow-xl shadow-green-900/10 hover:shadow-green-900/20 rounded-2xl"
+                className="w-full py-4 sm:py-5 text-base sm:text-lg font-bold shadow-xl shadow-green-900/10 hover:shadow-green-900/20 rounded-xl sm:rounded-2xl"
               >
                 Solicitar Agendamento
               </Button>
@@ -240,10 +240,10 @@ export function SchedulingModal() {
           </div>
         ) : (
           <div className="flex flex-col items-center text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-8 shadow-inner">
-              <Check size={48} strokeWidth={3} />
+            <div className="w-16 h-16 sm:w-24 sm:h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 sm:mb-8 shadow-inner">
+              <Check className="w-8 h-8 sm:w-12 sm:h-12" strokeWidth={3} />
             </div>
-            <h2 className="text-4xl font-display font-bold text-gray-900 mb-4 px-8">Solicitação Enviada!</h2>
+            <h2 className="text-2xl sm:text-4xl font-display font-bold text-gray-900 mb-2 sm:mb-4 px-8">Solicitação Enviada!</h2>
             <p className="text-xl text-gray-600 max-w-md mx-auto px-8 leading-relaxed">
               Obrigado, <span className="text-green-700 font-bold">{name.split(' ')[0]}</span>! <br/>
               Em breve nossa equipe entrará em contato.

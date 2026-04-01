@@ -33,7 +33,7 @@ export function ContactSection() {
   }, []);
 
   return (
-    <section id="contato" className="w-full bg-surface-alt py-24 sm:py-32 px-6 lg:px-12">
+    <section id="contato" className="w-full bg-surface-alt py-24 sm:py-80 px-6 lg:px-12">
       <div ref={sectionRef} className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* Left: Contact Info */}

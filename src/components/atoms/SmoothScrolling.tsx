@@ -4,11 +4,15 @@ import Lenis from "lenis";
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 export function SmoothScrolling({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // ... logic remains same ...
     const lenis = new Lenis({
       lerp: 0.1,
       duration: 1.2,
@@ -18,15 +22,12 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
       syncTouch: true,
     });
 
-    // Connect Lenis scroll events to GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    // Use GSAP ticker to drive Lenis RAF
     const ticker = gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
 
-    // Disable GSAP's own lag smoothing since Lenis handles it
     gsap.ticker.lagSmoothing(0);
 
     return () => {
@@ -35,5 +36,5 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  return <>{children}</>;
+  return <div className="min-h-screen relative">{children}</div>;
 }

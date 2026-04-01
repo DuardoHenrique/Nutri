@@ -6,10 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 const faqs = [
   {
     question: "Como funciona a consulta online vs presencial?",
@@ -63,7 +59,7 @@ export function FAQSection() {
   };
 
   return (
-    <section id="faq" ref={sectionRef} className="w-full bg-surface-alt py-24 sm:py-32 px-6 lg:px-12">
+    <section id="faq" ref={sectionRef} className="w-full bg-surface-alt py-24 sm:py-80 px-6 lg:px-12">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-green-700 font-semibold tracking-wide uppercase text-sm">Tire suas dúvidas</span>
