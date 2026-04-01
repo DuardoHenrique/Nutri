@@ -1,46 +1,39 @@
 "use client";
 
-import { ReactLenis } from "lenis/react";
-import { useEffect, useRef } from "react";
+import Lenis from "lenis";
+import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "lenis";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function SmoothScrolling({ children }: { children: React.ReactNode }) {
-  const lenisRef = useRef<Lenis | null>(null);
-
   useEffect(() => {
-    // Basic GSAP ticker integration
-    function update(time: number) {
-      lenisRef.current?.raf(time * 1000);
-    }
+    const lenis = new Lenis({
+      lerp: 0.1,
+      duration: 1.2,
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.5,
+      syncTouch: true,
+    });
 
-    gsap.ticker.add(update);
+    // Connect Lenis scroll events to GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    // Use GSAP ticker to drive Lenis RAF
+    const ticker = gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    // Disable GSAP's own lag smoothing since Lenis handles it
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      gsap.ticker.remove(update);
+      gsap.ticker.remove(ticker);
+      lenis.destroy();
     };
   }, []);
 
-  return (
-    <ReactLenis 
-      root 
-      ref={(instance) => {
-        if (instance) {
-          lenisRef.current = instance.lenis as any;
-        }
-      }}
-      options={{ 
-        lerp: 0.1, 
-        duration: 1.2, 
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 1.5,
-        infinite: false,
-        syncTouch: true, // Help with mobile transition sync
-      }}
-    >
-      {children}
-    </ReactLenis>
-  );
+  return <>{children}</>;
 }

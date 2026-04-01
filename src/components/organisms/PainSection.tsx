@@ -47,7 +47,6 @@ export function PainSection() {
 
     // 1. Cards sequence
     cards.forEach((card, index) => {
-      // In
       tl.to(card, {
         opacity: 1,
         y: 0,
@@ -56,10 +55,8 @@ export function PainSection() {
         ease: "power2.out",
       });
       
-      // Stay
-      tl.to({}, { duration: 1.5 }); // pause
+      tl.to({}, { duration: 1.5 });
       
-      // Out (unless it's the last one? actually user said "afterwards disappears to give place to next")
       if (index < cards.length - 1) {
         tl.to(card, {
           opacity: 0,
@@ -69,7 +66,6 @@ export function PainSection() {
           onComplete: () => { gsap.set(card, { visibility: "hidden" }); },
         });
       } else {
-        // Last card stays or fades with the title
         tl.to(card, {
           opacity: 0,
           y: -50,
@@ -97,8 +93,10 @@ export function PainSection() {
       ease: "power2.out",
     }, ">");
 
+    // Only kill THIS component's ScrollTrigger, not all of them
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      tl.scrollTrigger?.kill();
+      tl.kill();
     };
   }, []);
 
