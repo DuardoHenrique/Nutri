@@ -85,7 +85,7 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-transparent md:hidden" />
         </div>
 
-        <div className="relative z-10 w-full h-full max-w-screen-2xl mx-auto px-6 lg:px-16 flex flex-col justify-center items-center md:items-start">
+        <div className="relative z-10 w-full h-full max-w-screen-2xl mx-auto px-6 lg:px-16 flex flex-col justify-start pt-24 md:pt-0 md:justify-center items-center md:items-start">
           
           {/* Focus Content */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-2xl">
